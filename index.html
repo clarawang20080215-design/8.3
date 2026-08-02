@@ -37,16 +37,27 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body { background: var(--theme-bg); display: flex; justify-content: center; align-items: center; min-height: 100dvh; font-family: var(--font-main); transition: background 0.4s; overflow: hidden; }
 
-    .phone-frame { 
-      width: 100%; 
-      max-width: 380px; 
-      height: 100dvh; 
-      max-height: 780px; 
-      background: var(--paper-bg); 
-      position: relative; 
-      display: flex; 
-      flex-direction: column; 
+    .phone-frame {
+      width: 100%;
+      max-width: 375px;
+      height: 100dvh;
+      max-height: 840px;
+      background: var(--paper-bg);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 6px 10px 12px 10px; 
+
+      /* 🌟 核心：把整个手机框往上提（你可以把 -20px 改成更大或更小来调整高度） */
+      margin: -15px auto auto auto; 
+
+      transform: translateZ(0);
+      -webkit-overflow-scrolling: touch; 
       overflow: hidden;
+      border-radius: 36px;
+      border: 1.5px solid rgba(0, 0, 0, 0.15);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
     }
     @media (min-width: 420px) { 
       .phone-frame { 

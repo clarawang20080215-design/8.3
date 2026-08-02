@@ -40,22 +40,24 @@
     .phone-frame {
       width: 100%;
       max-width: 375px;
-      height: 100dvh;
-      max-height: 840px;
+      /* 🌟 核心：在 App 模式下使用标准的 100% 减去底部安全距离，防止被手机横条挤压 */
+      height: 100%;
+      min-height: 100dvh;
       background: var(--paper-bg);
       position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 6px 10px 12px 10px; 
-
-      /* 🌟 核心：把整个手机框往上提（你可以把 -20px 改成更大或更小来调整高度） */
-      margin: -15px auto auto auto; 
+      
+      /* 🌟 核心：给底部留出 iPhone 专属的黑条安全距离，顶部保持自然居中 */
+      padding: env(safe-area-inset-top, 6px) 10px env(safe-area-inset-bottom, 20px) 10px; 
+      
+      /* 🌟 拿掉之前导致偏移的负外边距，改回标准的居中 */
+      margin: 0 auto; 
 
       transform: translateZ(0);
       -webkit-overflow-scrolling: touch; 
-      overflow: hidden;
-      border-radius: 36px;
+      overflow: hidden !important;
+      border-radius: 36px !important;
       border: 1.5px solid rgba(0, 0, 0, 0.15);
       box-shadow: 0 20px 40px rgba(0,0,0,0.12);
     }
